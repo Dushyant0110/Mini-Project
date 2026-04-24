@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="brand_primary">#1E6F73</color>
+    <color name="brand_primary_dark">#144B4D</color>
+    <color name="brand_secondary">#E17D33</color>
+    <color name="brand_secondary_dark">#B86022</color>
+    <color name="surface_stroke">#E7D9CB</color>
+    <color name="chat_surface">#FFFDFB</color>
+    <color name="hero_title">#1C2B2C</color>
+    <color name="hero_body">#5E6B6C</color>
+    <color name="status_text">#274244</color>
+    <color name="pill_text">#2C6666</color>
+    <color name="progress_fill">#D77731</color>
+    <color name="button_secondary_text">#7C4A23</color>
+    <color name="input_text">#263132</color>
+    <color name="input_hint">#8A8F90</color>
+    <color name="empty_state_text">#8B7E74</color>
+    <color name="loading_text">#7A5B44</color>
+    <color name="message_role">#7D6F64</color>
+    <color name="message_text">#2A3131</color>
+    <color name="message_user_text">#FFFFFFFF</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+</resources>

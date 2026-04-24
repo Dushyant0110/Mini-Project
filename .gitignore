@@ -1,0 +1,45 @@
+# Android build outputs
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+bin/
+gen/
+out/
+build/
+*/build/
+
+# Gradle
+.gradle/
+gradle-app.setting
+
+# Local machine config
+local.properties
+
+# IDE files
+.idea/
+*.iml
+.navigation/
+captures/
+
+# Logs and crash artifacts
+*.log
+*.hprof
+java_pid*.hprof
+
+# Signing and secrets
+*.jks
+*.keystore
+google-services.json
+
+# Large local model assets and backups
+model_backup/
+Mini-Project/
+app/src/main/assets/models/*.task
+app/src/main/assets/models/*.gguf
+app/src/main/assets/models/*.bin
+
+# OS junk
+.DS_Store
+Thumbs.db

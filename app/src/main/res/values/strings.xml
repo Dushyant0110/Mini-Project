@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Offline AI Assistant</string>
+    <string name="hint_message">Type your message...</string>
+    <string name="send">Send</string>
+</resources>
