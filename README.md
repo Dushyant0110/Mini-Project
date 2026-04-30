@@ -1,65 +1,74 @@
-# Self-Correcting Reasoning LLM
+# 🧠 Self-Correcting Reasoning LLM (Offline Android App)
 
 <div align="center">
 
-[![Android](https://img.shields.io/badge/Platform-Android-brightgreen?style=for-the-badge&logo=android)](https://www.android.com)
-[![Kotlin](https://img.shields.io/badge/Language-Kotlin-orange?style=for-the-badge&logo=kotlin)](https://kotlinlang.org)
-[![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
-[![API](https://img.shields.io/badge/API-26%2B-brightgreen?style=for-the-badge)](https://developer.android.com/about/versions/oreo)
+![Platform](https://img.shields.io/badge/Platform-Android-brightgreen?style=for-the-badge&logo=android)  
+![Language](https://img.shields.io/badge/Language-Kotlin-orange?style=for-the-badge&logo=kotlin)  
+![Models](https://img.shields.io/badge/Models-Gemma%203%201B%20%7C%20SmolLM%20135M-blue?style=for-the-badge)  
+![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
 
-**Learning Self-Correcting Reasoning Policies in Large Language Models Without Supervision**
+**Learning Self-Correcting Reasoning in LLMs — Fully Offline, No Human Feedback**
 
 </div>
 
 ---
 
-Learning Self-Correcting Reasoning in LLMs — Fully Offline, No Human Feedback
+## 🚀 Overview
 
-</div>
-🚀 Overview
+This project is an **offline Android application** that implements a **self-correcting reasoning mechanism** for Large Language Models (LLMs).
 
-This project is an offline Android application that implements a self-correcting reasoning mechanism for Large Language Models (LLMs).
+It allows models to **detect, analyze, and fix their own mistakes** without relying on human feedback or internet connectivity.
 
-Unlike traditional approaches that rely on Reinforcement Learning from Human Feedback (RLHF), this system allows the model to:
+---
 
-Detect its own reasoning mistakes
-Revise incorrect steps
-Improve answer quality iteratively
+## 🎯 Problem Statement
 
-👉 All without internet and without human supervision
+Large Language Models often produce:
 
-🎯 Problem Statement
+- Hallucinated answers  
+- Logical inconsistencies  
+- Overconfident incorrect outputs  
 
-Modern LLMs often suffer from:
+Traditional solutions depend on **human feedback (RLHF)** which is:
 
-❌ Hallucinations
-❌ Logical inconsistencies
-❌ Overconfident wrong answers
+- Expensive  
+- Biased  
+- Not scalable  
 
-Most existing solutions depend on:
+---
 
-Human annotations (expensive 💰)
-Biased datasets
-Limited scalability
-💡 Proposed Solution
+## 💡 Solution
 
-This app introduces a self-correction loop where the model improves its reasoning autonomously.
+This project introduces a **self-correction loop** where the model improves its reasoning iteratively.
 
-🔁 Core Idea
+### 🔁 Workflow
 
-Instead of trusting the first output, the model:
+1. Generate initial reasoning  
+2. Analyze confidence signals  
+3. Detect potential errors  
+4. Regenerate incorrect steps  
+5. Repeat until final answer  
 
-1 Generates reasoning step-by-step
-2 Evaluates its own confidence
-3 Detects possible errors
-4 Regenerates only the incorrect parts
-5 Repeats until a stable answer is formed
-🧠 Model Details
-Model: Gemma 3 1B (Quantized ~529MB)
-Execution: Fully on-device
-Framework: Kotlin + Android ML stack
-No API / No Cloud Required
-⚙️ Self-Correction Algorithm
+---
+
+## 🧠 Models Used
+
+| Model | Size | Purpose |
+|------|------|--------|
+| **Gemma 3 1B** | ~529MB | High-quality reasoning |
+| **SmolLM 135M** | ~100–150MB | Fast & lightweight |
+
+### 🔍 Key Insight
+
+- Larger model → Better reasoning accuracy  
+- Smaller model → Faster & efficient  
+- Both can perform **self-correction**
+
+---
+
+## ⚙️ Self-Correction Algorithm
+
+```kotlin
 fun generateWithSelfCorrection(prompt: String, maxIterations: Int = 3): String {
     var currentPrompt = prompt
     var finalAnswer = ""
@@ -67,7 +76,6 @@ fun generateWithSelfCorrection(prompt: String, maxIterations: Int = 3): String {
     for (iteration in 0 until maxIterations) {
         val reasoning = llm.generate(currentPrompt)
         
-        // Detect self-correction signals
         if (reasoning.contains("wait") || 
             reasoning.contains("actually") || 
             reasoning.contains("correction")) {
@@ -75,13 +83,11 @@ fun generateWithSelfCorrection(prompt: String, maxIterations: Int = 3): String {
             currentPrompt = "$prompt\nPrevious reasoning was incorrect.\nPlease fix it:"
         } 
         
-        // Stop if answer is sufficiently detailed
         else if (reasoning.length > 200 || iteration == maxIterations - 1) {
             finalAnswer = reasoning
             break
         } 
         
-        // Continue reasoning
         else {
             currentPrompt = "$prompt\nStep-by-step reasoning:\n$reasoning\nTherefore:"
         }
@@ -89,79 +95,68 @@ fun generateWithSelfCorrection(prompt: String, maxIterations: Int = 3): String {
     return finalAnswer
 }
 ✨ Features
-Feature	Description	Status
-🤖 Offline AI	Runs entirely on-device (no internet)	✅
-🔄 Self-Correction Loop	Iterative reasoning refinement	✅
-💬 Chat UI	Smooth streaming chat interface	✅
-💾 Local Storage	Room DB for chat history	✅
-📥 Model Downloader	Download models inside app	✅
-🔀 Model Switching	Dynamic model selection	✅
-⚙️ Settings Panel	Temperature, tokens, theme	✅
-📤 Export Chats	Save conversations as JSON	✅
-📱 App Architecture
+🤖 Fully Offline AI (No Internet Required)
+🔄 Self-Correcting Reasoning Loop
+🔀 Multi-Model Support (Gemma + SmolLM)
+💬 Chat Interface with Streaming
+💾 Local Database (Room)
+📥 Model Downloader
+⚙️ Custom Settings (Temperature, Tokens)
+📤 Export Chat History (JSON)
+
+📱 Architecture
 User Input
-    ↓
-LLM Initial Reasoning
-    ↓
+   ↓
+Model Selection (Gemma / SmolLM)
+   ↓
+Initial Reasoning
+   ↓
 Confidence Analysis
-    ↓
+   ↓
 Error Detection
-    ↓
-Partial Regeneration
-    ↓
+   ↓
+Regeneration Loop
+   ↓
 Final Answer
-🧪 Research Insight
 
-This project explores an important hypothesis:
-
-Can LLMs improve their reasoning without external supervision?
-
-Key Observations:
-Models often implicitly detect their own mistakes
-Certain keywords signal correction:
-"wait..."
-"actually..."
-"I made a mistake..."
-Iterative prompting improves accuracy significantly
-📸 Screenshots (Add Yours)
-/screenshots/chat_ui.png
-/screenshots/settings.png
-/screenshots/model_download.png
 🛠️ Tech Stack
 Language: Kotlin
 Platform: Android (API 26+)
 Database: Room
-ML Model: Gemma 3 1B
-UI: Jetpack Compose / XML (whichever you used)
+Models: Gemma 3 1B, SmolLM 135M
+UI: Jetpack Compose / XML
+
 📦 Installation
 git clone https://github.com/your-username/self-correcting-llm.git
 cd self-correcting-llm
 
-Open in Android Studio and run on device.
+🧪 Research Insight
+
+This project explores:
+Can LLMs improve their reasoning without external supervision?
+
+Observations
+Models can detect their own mistakes
+Keywords like "wait", "actually" indicate correction
+Iterative reasoning improves accuracy
 
 🔮 Future Improvements
-✅ Better confidence scoring (entropy-based)
-⏳ Fine-tuned self-correction signals
-⏳ Multi-model comparison
-⏳ Visualization of reasoning steps
-⏳ Benchmarking vs standard LLM outputs
-🤝 Contributing
+Entropy-based confidence scoring
+Model benchmarking (speed vs accuracy)
+Visualization of reasoning steps
+Fine-tuned correction triggers
 
+🤝 Contributing
 Contributions are welcome!
 
-Fork → Create Branch → Commit → Pull Request
-📜 License
+Fork the repo
+Create a new branch
+Commit changes
+Open a pull request
 
-This project is licensed under the MIT License.
-
-🙌 Acknowledgements
-Google Gemma Models
-Open-source LLM community
-Android ML ecosystem
 ⭐ Support
+If you found this useful:
 
-If you find this project interesting:
-
-⭐ Star the repo
+⭐ Star the repository
 🍴 Fork it
-🧠 Share ideas
+🚀 Share it
