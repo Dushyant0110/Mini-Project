@@ -49,11 +49,11 @@ This app introduces a self-correction loop where the model improves its reasonin
 
 Instead of trusting the first output, the model:
 
-Generates reasoning step-by-step
-Evaluates its own confidence
-Detects possible errors
-Regenerates only the incorrect parts
-Repeats until a stable answer is formed
+1 Generates reasoning step-by-step
+2 Evaluates its own confidence
+3 Detects possible errors
+4 Regenerates only the incorrect parts
+5 Repeats until a stable answer is formed
 🧠 Model Details
 Model: Gemma 3 1B (Quantized ~529MB)
 Execution: Fully on-device
