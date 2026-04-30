@@ -65,6 +65,72 @@ This project introduces a **self-correction loop** where the model improves its 
 - Both can perform **self-correction**
 
 ---
+## ✨ Features
+🤖 Fully Offline AI (No Internet Required)
+🔄 Self-Correcting Reasoning Loop
+🔀 Multi-Model Support (Gemma + SmolLM)
+💬 Chat Interface with Streaming
+💾 Local Database (Room)
+📥 Model Downloader
+⚙️ Custom Settings (Temperature, Tokens)
+📤 Export Chat History (JSON)
+
+## 📱 Architecture
+User Input
+   ↓
+Model Selection (Gemma / SmolLM)
+   ↓
+Initial Reasoning
+   ↓
+Confidence Analysis
+   ↓
+Error Detection
+   ↓
+Regeneration Loop
+   ↓
+Final Answer
+
+## 🛠️ Tech Stack
+Language: Kotlin
+Platform: Android (API 26+)
+Database: Room
+Models: Gemma 3 1B, SmolLM 135M
+UI: Jetpack Compose / XML
+
+## 📦 Installation
+git clone https://github.com/your-username/self-correcting-llm.git
+cd self-correcting-llm
+
+## 🧪 Research Insight
+
+This project explores:
+Can LLMs improve their reasoning without external supervision?
+
+## Observations
+Models can detect their own mistakes
+Keywords like "wait", "actually" indicate correction
+Iterative reasoning improves accuracy
+
+## 🔮 Future Improvements
+Entropy-based confidence scoring
+Model benchmarking (speed vs accuracy)
+Visualization of reasoning steps
+Fine-tuned correction triggers
+
+## 🤝 Contributing
+Contributions are welcome!
+
+Fork the repo
+Create a new branch
+Commit changes
+Open a pull request
+
+## ⭐ Support
+If you found this useful:
+
+## ⭐ Star the repository
+🍴 Fork it
+🚀 Share it
 
 ## ⚙️ Self-Correction Algorithm
 
@@ -94,69 +160,5 @@ fun generateWithSelfCorrection(prompt: String, maxIterations: Int = 3): String {
     }
     return finalAnswer
 }
-✨ Features
-🤖 Fully Offline AI (No Internet Required)
-🔄 Self-Correcting Reasoning Loop
-🔀 Multi-Model Support (Gemma + SmolLM)
-💬 Chat Interface with Streaming
-💾 Local Database (Room)
-📥 Model Downloader
-⚙️ Custom Settings (Temperature, Tokens)
-📤 Export Chat History (JSON)
 
-📱 Architecture
-User Input
-   ↓
-Model Selection (Gemma / SmolLM)
-   ↓
-Initial Reasoning
-   ↓
-Confidence Analysis
-   ↓
-Error Detection
-   ↓
-Regeneration Loop
-   ↓
-Final Answer
 
-🛠️ Tech Stack
-Language: Kotlin
-Platform: Android (API 26+)
-Database: Room
-Models: Gemma 3 1B, SmolLM 135M
-UI: Jetpack Compose / XML
-
-📦 Installation
-git clone https://github.com/your-username/self-correcting-llm.git
-cd self-correcting-llm
-
-🧪 Research Insight
-
-This project explores:
-Can LLMs improve their reasoning without external supervision?
-
-Observations
-Models can detect their own mistakes
-Keywords like "wait", "actually" indicate correction
-Iterative reasoning improves accuracy
-
-🔮 Future Improvements
-Entropy-based confidence scoring
-Model benchmarking (speed vs accuracy)
-Visualization of reasoning steps
-Fine-tuned correction triggers
-
-🤝 Contributing
-Contributions are welcome!
-
-Fork the repo
-Create a new branch
-Commit changes
-Open a pull request
-
-⭐ Support
-If you found this useful:
-
-⭐ Star the repository
-🍴 Fork it
-🚀 Share it
